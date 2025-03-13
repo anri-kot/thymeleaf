@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class DemoController {
     
     @GetMapping("/")
-    public String getTemplate(Model model) {
+    public String getTemplate(@RequestParam(name = "name", required = false) String name, Model model) {
         model.addAttribute("noctchillIdols",
                 Arrays.asList(
                     "Higuchi Madoka",
@@ -19,6 +19,7 @@ public class DemoController {
                     "Hinana Ichikawa",
                     "Asakura Toru"
                     ));
+        model.addAttribute("name", name);
 
         return "index";
     }
